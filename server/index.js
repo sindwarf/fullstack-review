@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 let app = express();
 
 //app.use(express.static(__dirname + '/../client/dist'));This may be deprecated
@@ -8,8 +9,14 @@ let app = express();
 // Webpack is configured to generate files in that directory and
 // this server must serve those files when requested.
 
+app.use(express.static(__dirname + '/../client/dist/'))
+app.use(cors());
+app.use(express.json());
+
 app.post('/repos', function (req, res) {
   // TODO - your code here!
+  console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
+  res.sendStatus(201);
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
@@ -18,6 +25,8 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+  console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
+  res.sendStatus(200);
 });
 
 let port = 1128;
