@@ -13,12 +13,16 @@ let getReposByUsername = (username) => {
       'User-Agent': 'request',
       'Authorization': `token ${config.TOKEN}`
     }
-
-  axios.get(options.url, options.headers)
-  .then(res => console.log(`Success :: ${res}`);
-  )
-  .catch(res => console.log(`Failed :: ${res}`);)
   };
+
+  return axios.get(options.url, options.headers);
+  // .then(res => {
+  //   console.log(`Success in github.js :: ${res}`);
+  //   return(res);
+  // })
+  // .catch(res => {
+  //   console.log(`Failed in github.js :: ${res}`);
+  // })
 
 }
 

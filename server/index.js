@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const controllers = require('./controllers/controllers.js')
+const router = express.Router();
 let app = express();
 
 //app.use(express.static(__dirname + '/../client/dist'));This may be deprecated
@@ -15,8 +17,9 @@ app.use(express.json());
 
 app.post('/repos', function (req, res) {
   // TODO - your code here!
-  console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
-  res.sendStatus(201);
+  controllers.post(req, res);
+  // console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
+  // res.sendStatus(201);
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
@@ -25,8 +28,9 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
-  res.sendStatus(200);
+  // console.log(`PROCESSING REQUEST ${req.method} at ${req.url}`);
+  // res.sendStatus(200);
+  controllers.get(req, res);
 });
 
 let port = 1128;

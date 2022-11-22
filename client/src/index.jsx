@@ -11,7 +11,8 @@ const App = () => {
 
   const search = (term) => {
     console.log(`${term} was searched`);
-    postRepos(term);
+    //postRepos(term);
+    getRepos();
   }
 
   const postRepos = (searchTerm) => {//TODO: replace absolute path with dynamic path
@@ -23,6 +24,17 @@ const App = () => {
       console.log('We got ERROR: ', err);
     })
   }
+
+  const getRepos = () => {
+    axios.get('http://localhost:1128/repos')
+    .then((response) => {
+      console.log('success!', response);
+    })
+    .catch((err) => {
+      console.log('something went wrong getting');
+    })
+  }
+
 
 
   return (
